@@ -1,7 +1,5 @@
-
-
 export default function FeatureProducts() {
   return (
-    <div>FeatureProducts</div>
+    <div>FeatureProducts.........</div>
   )
 }
