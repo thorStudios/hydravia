@@ -3,7 +3,7 @@
 export default function Header() {
   return (
     <div>
-      this is header
+      this is header Page.
     </div>
   )
 }
