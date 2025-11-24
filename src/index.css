@@ -5,6 +5,7 @@
 @theme {
   --color-primary: #064e3b;
   --color-dark: #001d15;
+  --color-secondary: #008f6a;
   --font-outfit: "Outfit", sans-serif;
   --font-poppins: "Poppins", sans-serif;
 }
@@ -12,7 +13,12 @@
 body {
   @apply font-poppins;
 }
-
+.container{
+  @apply mx-auto px-5 lg:px-3.75 sm:px-8 md:px-7 md:max-w-full lg:max-w-[1000px] xl:max-w-[1260px] 2xl:max-w-[1470px];
+}
+html{
+  @apply text-[3.4vw] sm:text-[100%] md:text-[80%] lg:text-[75%] xl:text-[90%] 2xl:text-[100%]
+}
 h1,
 h2,
 h3,
