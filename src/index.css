@@ -28,11 +28,6 @@ h6 {
   @apply font-outfit;
 }
 
-@layer utilities {
-  .container {
-    @apply max-w-[1336px] mx-auto px-4;
-  }
-}
 
 @layer components {
   .btn-primary {
