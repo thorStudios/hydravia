@@ -1,18 +1,14 @@
-import { MdFacebook } from "react-icons/md";
-import { FaInstagramSquare } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { AiFillTikTok } from "react-icons/ai";
-import { IoIosMail } from "react-icons/io";
-import { FaPhoneAlt } from "react-icons/fa";
-import { FaCartArrowDown } from "react-icons/fa";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { IoIosArrowDown } from "react-icons/io";
-import purifire1 from "../assets/images/purifire-1.jpg"
-import purifire2 from "../assets/images/purifire-2.jpg"
+import { FaCartArrowDown, FaInstagramSquare, FaPhoneAlt } from "react-icons/fa";
+import { FaArrowRightLong, FaXTwitter } from "react-icons/fa6";
+import { IoIosArrowDown, IoIosMail } from "react-icons/io";
+import { MdFacebook } from "react-icons/md";
+import purifire1 from "../assets/images/purifire-1.jpg";
+import purifire2 from "../assets/images/purifire-2.jpg";
 
 
-import logo from "../assets/images/logo.jpeg";
 import { Link } from "react-router";
+import logo from "../assets/images/logo.jpeg";
 
 export default function Header() {
   return (
