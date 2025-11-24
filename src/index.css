@@ -13,12 +13,15 @@
 body {
   @apply font-poppins;
 }
-.container{
+
+.container {
   @apply mx-auto px-5 lg:px-3.75 sm:px-8 md:px-7 md:max-w-full lg:max-w-[1000px] xl:max-w-[1260px] 2xl:max-w-[1470px];
 }
-html{
+
+html {
   @apply text-[3.4vw] sm:text-[100%] md:text-[80%] lg:text-[75%] xl:text-[90%] 2xl:text-[100%]
 }
+
 h1,
 h2,
 h3,
@@ -29,26 +32,25 @@ h6 {
 }
 
 
+
 @layer components {
   .btn-primary {
     @apply bg-primary text-white px-5 py-2 rounded-md hover:bg-dark;
   }
+
   .btn-secondary {
     @apply bg-dark text-white px-4 py-2 rounded-md;
   }
+
   /* Swiper Navigation Buttons */
   .swiper-button-next,
   .swiper-button-prev {
-    @apply w-5 h-5 p-3 bg-white hover:bg-primary/10 hover:border-primary rounded-full border border-gray-300 text-primary! flex items-center justify-center;
-    font-size: 0.5rem; 
+    @apply w-5 h-5 p-3 bg-white hover:bg-primary/10 hover:border-primary rounded-full border border-gray-300 text-primary flex items-center justify-center;
+    font-size: 0.5rem;
   }
 
   .swiper-button-next::after,
   .swiper-button-prev::after {
-    @apply text-xs text-gray-800; 
+    @apply text-xs text-gray-800;
   }
 }
-
-
-
-
