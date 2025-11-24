@@ -1,52 +1,106 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FaEye, FaEyeSlash, FaEnvelope, FaLock } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaUpload, FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 import { Link } from 'react-router';
 import registerLottie from '../../assets/lotties/register.json';
 import Lottie from 'lottie-react'; // Make sure you have lottie-react installed
 
-const Login = () => {
+// Image upload URL
+const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_upload_key}`;
+
+const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    reset
   } = useForm({
     defaultValues: {
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
+      confirmPassword: '',
+      profileImage: null
     }
   });
 
+  const watchPassword = watch('password');
+
   // Placeholder functions for future implementation
-  const handleSignUp = () => {
-    console.log('Sign up functionality to be implemented');
+  const handleSignIn = () => {
+    console.log('Sign in functionality to be implemented');
   };
 
   const handleSocialSignIn = (provider) => {
     console.log(`Social sign in with ${provider} to be implemented`);
   };
 
-  const handleForgotPassword = () => {
-    console.log('Forgot password functionality to be implemented');
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Create preview
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const response = await fetch(imageUploadUrl, {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (!response.ok) {
+        throw new Error('Image upload failed');
+      }
+      
+      const data = await response.json();
+      return data.data.url;
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      throw error;
+    }
   };
 
   const onSubmit = async (data) => {
     setIsLoading(true);
 
     try {
+      let imageUrl = null;
+      
+      // Upload image if exists
+      if (data.profileImage && data.profileImage[0]) {
+        imageUrl = await uploadImage(data.profileImage[0]);
+      }
+
       // Here you would typically send the data to your backend
-      console.log('Login data:', data);
+      console.log('Registration data:', {
+        ...data,
+        profileImage: imageUrl
+      });
+
+      // Reset form
+      reset();
+      setImagePreview(null);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      alert('Login successful!');
+      alert('Registration successful!');
     } catch (error) {
-      console.error('Login error:', error);
-      alert('Login failed. Please try again.');
+      console.error('Registration error:', error);
+      alert('Registration failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -69,14 +123,92 @@ const Login = () => {
         {/* Form Section */}
         <div className="w-full max-w-md">
           {/* Card */}
-          <div className="rounded-2xl shadow-xl overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="bg-gradient-to-r from-emerald-800 to-emerald-900 p-6 text-center">
-              <h1 className="text-2xl font-bold text-white">Welcome Back</h1>
-              <p className="text-emerald-100 mt-2">Sign in to your account</p>
+              <h1 className="text-2xl font-bold text-white">Create Your Account</h1>
+              <p className="text-emerald-100 mt-2">Join our community today</p>
             </div>
 
             <div className="p-6">
+              {/* Profile Image Upload */}
+              <div className="flex justify-center mb-6">
+                <div className="relative">
+                  <div className="w-24 h-24 rounded-full bg-gray-200 border-4 border-white shadow-lg overflow-hidden">
+                    {imagePreview ? (
+                      <img 
+                        src={imagePreview} 
+                        alt="Profile preview" 
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+                        <FaUser className="w-8 h-8 text-gray-500" />
+                      </div>
+                    )}
+                  </div>
+                  <label 
+                    htmlFor="profileImage"
+                    className="absolute bottom-0 right-0 bg-emerald-600 text-white p-2 rounded-full shadow-lg cursor-pointer hover:bg-emerald-700 transition-colors"
+                  >
+                    <FaUpload className="w-4 h-4" />
+                    <input
+                      type="file"
+                      id="profileImage"
+                      accept="image/*"
+                      {...register('profileImage')}
+                      onChange={handleImageChange}
+                      className="hidden"
+                    />
+                  </label>
+                </div>
+              </div>
+
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                {/* Name Fields */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+                      <FaUser className="text-gray-400 w-5 h-5" />
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="First Name"
+                      {...register('firstName', { 
+                        required: 'First name is required',
+                        minLength: {
+                          value: 2,
+                          message: 'First name must be at least 2 characters'
+                        }
+                      })}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
+                    />
+                    {errors.firstName && (
+                      <div className="absolute -bottom-5 left-0 w-full">
+                        <p className="text-red-500 text-xs">{errors.firstName.message}</p>
+                      </div>
+                    )}
+                  </div>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      placeholder="Last Name"
+                      {...register('lastName', { 
+                        required: 'Last name is required',
+                        minLength: {
+                          value: 2,
+                          message: 'Last name must be at least 2 characters'
+                        }
+                      })}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
+                    />
+                    {errors.lastName && (
+                      <div className="absolute -bottom-5 left-0 w-full">
+                        <p className="text-red-500 text-xs">{errors.lastName.message}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
                 {/* Email */}
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -97,7 +229,7 @@ const Login = () => {
                   {errors.email && (
                     <div className="absolute -bottom-5 left-0 w-full">
                       <p className="text-red-500 text-xs">{errors.email.message}</p>
-                    </div>
+                      </div>
                   )}
                 </div>
 
@@ -114,6 +246,10 @@ const Login = () => {
                       minLength: {
                         value: 6,
                         message: 'Password must be at least 6 characters'
+                      },
+                      pattern: {
+                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+                        message: 'Password must contain at least one uppercase letter, one lowercase letter, and one number'
                       }
                     })}
                     className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
@@ -132,15 +268,33 @@ const Login = () => {
                   )}
                 </div>
 
-                {/* Forgot Password */}
-                <div className="flex justify-end">
+                {/* Confirm Password */}
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <FaLock className="text-gray-400 w-5 h-5" />
+                  </div>
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="Confirm Password"
+                    {...register('confirmPassword', { 
+                      required: 'Please confirm your password',
+                      validate: value => 
+                        value === watchPassword || 'Passwords do not match'
+                    })}
+                    className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all"
+                  />
                   <button
                     type="button"
-                    onClick={handleForgotPassword}
-                    className="text-emerald-600 text-sm font-medium hover:text-emerald-700 transition-colors"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 transition-colors"
                   >
-                    Forgot your password?
+                    {showConfirmPassword ? <FaEyeSlash className="w-5 h-5" /> : <FaEye className="w-5 h-5" />}
                   </button>
+                  {errors.confirmPassword && (
+                    <div className="absolute -bottom-5 left-0 w-full">
+                      <p className="text-red-500 text-xs">{errors.confirmPassword.message}</p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Submit Button */}
@@ -153,10 +307,10 @@ const Login = () => {
                     {isLoading ? (
                       <div className="flex items-center justify-center">
                         <div className="w-5 h-5 border-t-2 border-white rounded-full animate-spin mr-2"></div>
-                        Signing In...
+                        Creating Account...
                       </div>
                     ) : (
-                      'Sign In'
+                      'Create Account'
                     )}
                   </button>
                 </div>
@@ -195,16 +349,16 @@ const Login = () => {
                 </button>
               </div>
 
-              {/* Sign Up Link */}
+              {/* Sign In Link */}
               <div className="text-center mt-6">
                 <p className="text-gray-600">
-                  Don't have an account?{' '}
+                  Already have an account?{' '}
                   <Link
-                    to={"/register"}
-                    onClick={handleSignUp}
+                  to={"/login"}
+                    onClick={handleSignIn}
                     className="text-emerald-600 font-semibold hover:text-emerald-700 transition-colors"
                   >
-                    Sign Up
+                    Sign In
                   </Link>
                 </p>
               </div>
@@ -216,4 +370,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
