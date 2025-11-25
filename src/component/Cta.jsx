@@ -1,4 +1,4 @@
-import bg1 from '../assets/cta-bg.jpg'
+import bg1 from '../assets/images/cta-bg.jpg'
 const Cta = () => {
     return (
         <section className="bg-primary py-12 sm:py-24 relative z-10">

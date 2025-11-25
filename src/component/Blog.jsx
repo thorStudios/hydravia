@@ -1,8 +1,8 @@
 import { Link } from 'react-router';
-import blog1 from '../assets/blog1.jpg';
-import blog2 from '../assets/blog2.jpg';
-import blog3 from '../assets/blog3.jpg';
-import blog4 from '../assets/blog4.jpg';
+import blog1 from '../assets/images/blog1.jpg';
+import blog2 from '../assets/images/blog2.jpg';
+import blog3 from '../assets/images/blog3.jpg';
+import blog4 from '../assets/images/blog4.jpg';
 import { FaRegEye, FaRegHeart, FaRegCommentDots } from "react-icons/fa6";
 import { IoArrowForwardOutline } from "react-icons/io5";
 const Blog = () => {
