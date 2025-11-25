@@ -38,7 +38,7 @@ img {
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white px-5 py-2 rounded-md hover:bg-dark;
+    @apply bg-primary inline-flex justify-center font-medium items-center gap-3 text-white px-5 py-2.5 rounded-md hover:bg-dark;
   }
 
   .btn-secondary {

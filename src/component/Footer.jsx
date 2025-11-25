@@ -17,7 +17,7 @@ export default function Footer() {
               </div>
               <h1 className="text-2xl font-bold text-white">Hydravia</h1>
             </Link>
-            <p className="mt-4">Hydravia is dedicated to delivering clean, safe, and great-tasting water for every home. Our advanced filtration technology removes impurities while preserving essential minerals, ensuring a healthier lifestyle for you and your family.</p>
+            <p className="mt-4">Enjoy cleaner, fresher water with Hydravia’s advanced filtration technology, designed to remove harmful impurities while preserving the minerals your family needs.</p>
           </div>
           <div className="px-3.75 mt-9 w-6/12 sm:w-auto">
             <h2 className="text-white font-semibold text-xl">Quick Links</h2>
