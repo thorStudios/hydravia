@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FaEye, FaEyeSlash, FaEnvelope, FaLock } from 'react-icons/fa';
+import { FaEye, FaEyeSlash} from 'react-icons/fa';
+import { CiLock, CiMail } from "react-icons/ci";
 import { Link } from 'react-router';
 import registerLottie from '../../assets/lotties/register.json';
 import Lottie from 'lottie-react'; // Make sure you have lottie-react installed
@@ -54,7 +55,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="max-w-6xl w-full flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div className="container w-full flex flex-col lg:flex-row items-center justify-between gap-8">
         {/* Lottie Animation - Hidden on mobile and tablet, visible on desktop */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-center lg:items-center">
           <div className="max-w-md w-full">
@@ -70,7 +71,7 @@ const Login = () => {
         <div className="w-full max-w-md">
           {/* Card */}
           <div className="rounded-2xl shadow-xl overflow-hidden">
-            <div className="bg-gradient-to-r from-emerald-800 to-emerald-900 p-6 text-center">
+            <div className="bg-linear-to-r from-emerald-800 to-emerald-900 p-6 text-center">
               <h1 className="text-2xl font-bold text-white">Welcome Back</h1>
               <p className="text-emerald-100 mt-2">Sign in to your account</p>
             </div>
@@ -80,7 +81,7 @@ const Login = () => {
                 {/* Email */}
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <FaEnvelope className="text-gray-400 w-5 h-5" />
+                    <CiMail className="text-gray-400 w-5 h-5" />
                   </div>
                   <input
                     type="email"
@@ -104,7 +105,7 @@ const Login = () => {
                 {/* Password */}
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <FaLock className="text-gray-400 w-5 h-5" />
+                    <CiLock className="text-gray-400 w-5 h-5" />
                   </div>
                   <input
                     type={showPassword ? "text" : "password"}
@@ -148,7 +149,7 @@ const Login = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white py-3 px-4 rounded-lg font-semibold hover:from-emerald-700 hover:to-emerald-800 focus:ring-4 focus:ring-emerald-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-linear-to-r from-emerald-600 to-emerald-700 text-white py-3 px-4 rounded-lg font-semibold hover:from-emerald-700 hover:to-emerald-800 focus:ring-4 focus:ring-emerald-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isLoading ? (
                       <div className="flex items-center justify-center">
