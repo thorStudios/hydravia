@@ -46,8 +46,8 @@ const FeatureProducts = () => {
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-primary mb-4 text-center">
-            Featured Products
+          <h2 className="text-4xl font-bold  mb-4 text-center">
+            Featured <span className="text-primary">Products</span> 
             <div className="w-16 rounded-md h-1 mt-2 bg-primary mx-auto"></div>
           </h2>
           <p className="text-lg font-normal text-gray-600 max-w-2xl mx-auto capitalize">
@@ -57,7 +57,7 @@ const FeatureProducts = () => {
         </div>
 
         {/* Swiper Carousel - Compact Version */}
-        <div className="">
+        <div className="relative">
           <Swiper
             modules={[Navigation,Autoplay]}
             navigation={{
@@ -81,11 +81,11 @@ const FeatureProducts = () => {
               delay: 2000,
               disableOnInteraction: false,
             }}
-            className="relative group"
+            className="relative group px-5"
           >
             {products.map((product) => (
               <SwiperSlide key={product.id}>
-                <div className="bg-linear-to-r from-primary/10 to bg-cyan-50 rounded-3xl shadow transition-all duration-500 border border-gray-100 overflow-hidden">
+                <div className="bg-linear-to-r from-primary/10 to bg-cyan-50 rounded-3xl shadow transition-all duration-500 border border-gray-100 overflow-hidden cursor-pointer">
                   <div className="grid grid-cols-1 md:grid-cols-3  p-6">
                     {/* Product Information - Compact */}
                     <div className="md:col-span-2 flex flex-col justify-center space-y-2 pl-5 py-10">
@@ -138,14 +138,14 @@ const FeatureProducts = () => {
                       </div>
 
                       {/* Action Buttons - Compact */}
-                      <div className="flex justify-start items-center gap-4 space-x-3">
+                      <div className="mt-4 flex justify-start items-center gap-4 space-x-3">
                         <Link to={`/product/${product.id}`} className="">
-                          <button className="btn-primary text-sm py-2.5 px-4 hover:bg-emerald-800 transition-colors duration-300">
+                          <button className="btn-primary">
                             Buy Now
                           </button>
                         </Link>
                         <Link to={`/product/${product.id}`} className="">
-                          <button className="btn-secondary text-sm py-2.5 px-4 hover:bg-gray-800 transition-colors duration-300">
+                          <button className="btn-secondary ">
                             Learn More
                           </button>
                         </Link>
@@ -168,18 +168,18 @@ const FeatureProducts = () => {
               </SwiperSlide>
             ))}
 
+          </Swiper>
             {/* Custom Compact Navigation */}
-            <div className="absolute top-1/2 -translate-y-1/2 -left-4 z-10">
-              <button className="custom-prev w-10 h-10 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-green-600 hover:border-green-400 transition-all duration-300 transform hover:scale-110 group-hover:opacity-100 opacity-80">
+            <div className="absolute top-1/2 -translate-y-1/2 -left-4.5 z-10">
+              <button className="custom-prev w-10 h-10 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-green-600 hover:border-green-400 transition-all duration-300 transform hover:scale-110 group-hover:opacity-100 ">
                 <MdChevronLeft />
               </button>
             </div>
-            <div className="absolute top-1/2 -translate-y-1/2 -right-4 z-10">
-              <button className="custom-next w-10 h-10 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-green-600 hover:border-green-400 transition-all duration-300 transform hover:scale-110 group-hover:opacity-100 opacity-80 ">
+            <div className="absolute top-1/2 -translate-y-1/2 -right-4.5 z-10">
+              <button className="custom-next w-10 h-10 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-green-600 hover:border-green-400 transition-all duration-300 transform hover:scale-110 group-hover:opacity-100  ">
                 <MdChevronRight />
               </button>
             </div>
-          </Swiper>
         </div>
       </div>
     </section>

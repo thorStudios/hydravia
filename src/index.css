@@ -19,7 +19,7 @@ body {
 }
 
 html {
-  @apply text-[3.4vw] sm:text-[100%] md:text-[80%] lg:text-[75%] xl:text-[90%] 2xl:text-[100%]
+  @apply text-[3.4vw] sm:text-[100%] md:text-[80%] lg:text-[75%] xl:text-[90%] 2xl:text-[100%];
 }
 
 h1,
@@ -31,6 +31,10 @@ h6 {
   @apply font-outfit;
 }
 
+button,
+a {
+  cursor: pointer;
+}
 img {
   max-width: 100%;
 }
@@ -44,7 +48,7 @@ img {
   .btn-secondary {
     @apply bg-dark text-white px-4 py-2 rounded-md;
   }
-
+  
   /* Swiper Navigation Buttons */
   .swiper-button-next,
   .swiper-button-prev {
