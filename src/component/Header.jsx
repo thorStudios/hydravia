@@ -3,11 +3,12 @@ import { FaCartArrowDown, FaInstagramSquare, FaPhoneAlt } from "react-icons/fa";
 import { FaArrowRightLong, FaXTwitter } from "react-icons/fa6";
 import { IoIosArrowDown, IoIosMail } from "react-icons/io";
 import { MdFacebook } from "react-icons/md";
+import { GiWaterDrop } from "react-icons/gi";
 import purifire1 from "../assets/images/purifire-1.jpg";
 import purifire2 from "../assets/images/purifire-2.jpg";
 
 
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import logo from "../assets/images/logo.jpeg";
 
 export default function Header() {
@@ -47,50 +48,83 @@ export default function Header() {
         <div className="container">
           <div className="flex justify-between items-center relative">
 
-            <Link to="#" className="logo">
+            <Link to="/" className="logo">
               <img src={logo} className="w-20" alt="Logo image" />
             </Link>
             <nav>
               <ul className="flex gap-8">
-                <li className="h-20 flex items-center"><Link to="#">Menu</Link></li>
+                <li className="h-20 flex items-center"><NavLink to="#">Menu</NavLink></li>
 
                 <li className="relative group flex justify-between gap-5 items-center h-20">
-                  <Link to="#">Sub Menu</Link>
+                  <NavLink to="#">Sub Menu</NavLink>
                   <IoIosArrowDown className="group-hover:rotate-180 transition-all duration-400 ease-linear" size={16} />
 
-                  <ul className="absolute top-full left-0 bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50 transition-all duration-400 ease-linear  min-w-40 rounded-b-md ">
-                    <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                    <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                    <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                    <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                    <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
+                  <ul className="absolute top-full left-0 bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50 transition-all duration-400 ease-linear  min-w-40 rounded-b-md drop-shadow-lg space-y-5">
+                    <li><Link className="py-1 px-3 flex items-center gap-2 hover:bg-primary hover:text-white" to="#"><GiWaterDrop />
+                      Submenu</Link></li>
+                    <li><Link className="py-1 px-3 flex items-center gap-2 hover:bg-primary hover:text-white" to="#"><GiWaterDrop />
+                      Submenu</Link></li>
+                    <li><Link className="py-1 px-3 flex items-center gap-2 hover:bg-primary hover:text-white" to="#"><GiWaterDrop />
+                      Submenu</Link></li>
+                    <li><Link className="py-1 px-3 flex items-center gap-2 hover:bg-primary hover:text-white" to="#"><GiWaterDrop />
+                      Submenu</Link></li>
+                    <li><Link className="py-1 px-3 flex items-center gap-2 hover:bg-primary hover:text-white" to="#"><GiWaterDrop />
+                      Submenu</Link></li>
+                    <li><Link className="py-1 px-3 flex items-center gap-2 hover:bg-primary hover:text-white" to="#"><GiWaterDrop />
+                      Submenu</Link></li>
                   </ul>
                 </li>
 
                 <li className="group flex justify-between gap-5 h-20 items-center">
-                  <Link to="#">Mega Menu</Link>
+                  <NavLink to="#">Mega Menu</NavLink>
                   <IoIosArrowDown className="group-hover:rotate-180 transition-all duration-400 ease-linear" size={16} />
 
-                  <div className="w-full bg-white absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50 transition-all duration-400 ease-linear">
+                  <div className="w-full bg-white absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50 transition-all duration-400 ease-linear drop-shadow-lg rounded-b-md overflow-hidden">
                     <div className="grid grid-cols-4 gap-5">
                       <div className="px-10 pt-8">
-                        <h3 className="px-3 font-semibold text-xl mb-4">Quick Link</h3>
+                        <h3 className="font-semibold text-xl mb-4">Quick Link</h3>
                         <ul className="space-y-5">
-                          <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                          <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                          <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                          <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                          <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
                         </ul>
                       </div>
                       <div className="px-10 pt-8">
-                        <h3 className="px-3 font-semibold text-xl mb-4">Quick Link</h3>
+                        <h3 className="font-semibold text-xl mb-4">Quick Link</h3>
                         <ul className="space-y-5">
-                          <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                          <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                          <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                          <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
-                          <li><Link className="py-1 px-3 block hover:bg-primary hover:text-white" to="#">Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
+                          <li><Link className="py-1 flex items-center gap-2" to="#">
+                            <GiWaterDrop />
+                            Mega Submenu</Link></li>
                         </ul>
                       </div>
                       <div>
@@ -103,8 +137,8 @@ export default function Header() {
                   </div>
                 </li>
 
-                <li className="h-20 flex items-center"><Link to="#">Menu</Link></li>
-                <li className="h-20 flex items-center"><Link to="#">Menu</Link></li>
+                <li className="h-20 flex items-center"><NavLink to="#">Menu</NavLink></li>
+                <li className="h-20 flex items-center"><NavLink to="#">Menu</NavLink></li>
               </ul>
             </nav>
             <div className="flex items-center gap-5">
