@@ -31,6 +31,9 @@ h6 {
   @apply font-outfit;
 }
 
+img {
+  max-width: 100%;
+}
 
 
 @layer components {
